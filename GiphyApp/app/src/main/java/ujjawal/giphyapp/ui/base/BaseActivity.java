@@ -27,7 +27,7 @@ import ujjawal.giphyapp.utils.CommonUtils;
 import ujjawal.giphyapp.utils.NetworkUtils;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 public abstract class BaseActivity extends AppCompatActivity

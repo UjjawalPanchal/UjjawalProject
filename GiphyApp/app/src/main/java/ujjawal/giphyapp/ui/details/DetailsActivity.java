@@ -42,6 +42,10 @@ import ujjawal.giphyapp.R;
 import ujjawal.giphyapp.ui.base.BaseActivity;
 import ujjawal.giphyapp.ui.main.MainActivity;
 
+/**
+ * Created by ujjawal on 30/05/18.
+ */
+
 public class DetailsActivity extends BaseActivity implements DetailsMvpView {
 
     private static final String TAG = "DetailsActivity";

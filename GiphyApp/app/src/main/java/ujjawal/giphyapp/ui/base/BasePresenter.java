@@ -1,7 +1,7 @@
 package ujjawal.giphyapp.ui.base;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 import android.util.Log;
@@ -119,11 +119,6 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
             Log.e(TAG, "handleApiError", e);
             getMvpView().onError(R.string.api_default_error);
         }
-    }
-
-    @Override
-    public void setUserAsLoggedOut() {
-        //getDataManager().setAccessToken(null);
     }
 
     public static class MvpViewNotAttachedException extends RuntimeException {

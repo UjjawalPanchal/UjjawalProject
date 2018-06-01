@@ -16,7 +16,7 @@ import ujjawal.giphyapp.utils.rx.SchedulerProvider;
 
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>

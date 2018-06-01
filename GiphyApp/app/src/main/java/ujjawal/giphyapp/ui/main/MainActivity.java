@@ -20,7 +20,7 @@ import ujjawal.giphyapp.data.network.model.MainResponse;
 import ujjawal.giphyapp.ui.base.BaseActivity;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 public class MainActivity extends BaseActivity implements MainMvpView {

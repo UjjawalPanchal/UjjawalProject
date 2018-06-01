@@ -6,6 +6,10 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Created by ujjawal on 30/05/18.
+ */
+
 public class MainResponse {
 
     @SerializedName("data")

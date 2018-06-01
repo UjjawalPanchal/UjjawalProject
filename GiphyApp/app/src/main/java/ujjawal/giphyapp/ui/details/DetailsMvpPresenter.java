@@ -2,8 +2,10 @@ package ujjawal.giphyapp.ui.details;
 
 import ujjawal.giphyapp.ui.base.MvpPresenter;
 
-public interface DetailsMvpPresenter<V extends DetailsMvpView> extends MvpPresenter<V> {
+/**
+ * Created by ujjawal on 30/05/18.
+ */
 
-    void doSearch(String keyWord);
+public interface DetailsMvpPresenter<V extends DetailsMvpView> extends MvpPresenter<V> {
 
 }

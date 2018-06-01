@@ -5,7 +5,7 @@ import ujjawal.giphyapp.di.PerActivity;
 import ujjawal.giphyapp.ui.base.MvpPresenter;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 @PerActivity

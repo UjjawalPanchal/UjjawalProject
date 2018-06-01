@@ -1,7 +1,7 @@
 package ujjawal.giphyapp.ui.base;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 import android.support.annotation.StringRes;

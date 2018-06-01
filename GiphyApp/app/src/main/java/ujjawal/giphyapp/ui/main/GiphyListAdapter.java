@@ -22,7 +22,7 @@ import ujjawal.giphyapp.ui.details.DetailsActivity;
 import ujjawal.giphyapp.utils.AppLogger;
 
 /**
- * Created by Janisharali on 25-05-2017.
+ * Created by ujjawal on 30/05/18.
  */
 
 public class GiphyListAdapter extends RecyclerView.Adapter<BaseViewHolder> {

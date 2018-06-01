@@ -9,7 +9,7 @@ import io.reactivex.Single;
 import ujjawal.giphyapp.data.network.model.MainResponse;
 
 /**
- * Created by janisharali on 28/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 @Singleton

@@ -1,8 +1,6 @@
 package ujjawal.giphyapp.data;
 
 
-import android.database.Observable;
-
 import ujjawal.giphyapp.data.network.ApiHelper;
 
 /**

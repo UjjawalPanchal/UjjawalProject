@@ -8,7 +8,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ujjawal.giphyapp.BuildConfig;
-import ujjawal.giphyapp.R;
 import ujjawal.giphyapp.data.AppDataManager;
 import ujjawal.giphyapp.data.DataManager;
 import ujjawal.giphyapp.data.network.ApiHeader;
@@ -16,9 +15,6 @@ import ujjawal.giphyapp.data.network.ApiHelper;
 import ujjawal.giphyapp.data.network.AppApiHelper;
 import ujjawal.giphyapp.di.ApiInfo;
 import ujjawal.giphyapp.di.ApplicationContext;
-import ujjawal.giphyapp.di.DatabaseInfo;
-import ujjawal.giphyapp.di.PreferenceInfo;
-import ujjawal.giphyapp.utils.AppConstants;
 
 /**
  * Created by ujjawal on 30/05/18.
@@ -45,21 +41,9 @@ public class ApplicationModule {
     }
 
     @Provides
-    @DatabaseInfo
-    String provideDatabaseName() {
-        return AppConstants.DB_NAME;
-    }
-
-    @Provides
     @ApiInfo
     String provideApiKey() {
         return BuildConfig.API_KEY;
-    }
-
-    @Provides
-    @PreferenceInfo
-    String providePreferenceName() {
-        return AppConstants.PREF_NAME;
     }
 
     @Provides
@@ -67,7 +51,6 @@ public class ApplicationModule {
     DataManager provideDataManager(AppDataManager appDataManager) {
         return appDataManager;
     }
-
 
     @Provides
     @Singleton

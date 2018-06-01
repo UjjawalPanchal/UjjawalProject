@@ -8,7 +8,7 @@ import ujjawal.giphyapp.ui.base.BasePresenter;
 import ujjawal.giphyapp.utils.rx.SchedulerProvider;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by ujjawal on 30/05/18.
  */
 
 public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V>

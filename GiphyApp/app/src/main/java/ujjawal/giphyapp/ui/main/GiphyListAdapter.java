@@ -120,6 +120,7 @@ public class GiphyListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                     if (blog.getEmbedUrl() != null) {
                         try {
                             Intent intent = new Intent(itemView.getContext(), DetailsActivity.class);
+                            intent.putExtra("vidId", blog.getId());
                             intent.putExtra("originalMp4", blog.getImages().getOriginalMp4().getMp4());
                             itemView.getContext().startActivity(intent);
                         } catch (Exception e) {

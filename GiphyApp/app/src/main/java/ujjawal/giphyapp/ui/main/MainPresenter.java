@@ -6,6 +6,7 @@ import com.androidnetworking.error.ANError;
 
 import javax.inject.Inject;
 
+import io.objectbox.BoxStore;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -25,8 +26,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     private static final String TAG = "MainPresenter";
 
     @Inject
-    public MainPresenter(DataManager dataManager,
-                         SchedulerProvider schedulerProvider,
+    public MainPresenter(DataManager dataManager, SchedulerProvider schedulerProvider,
                          CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }

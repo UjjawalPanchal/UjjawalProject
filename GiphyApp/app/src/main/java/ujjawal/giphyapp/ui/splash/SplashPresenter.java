@@ -2,6 +2,7 @@ package ujjawal.giphyapp.ui.splash;
 
 import javax.inject.Inject;
 
+import io.objectbox.BoxStore;
 import io.reactivex.disposables.CompositeDisposable;
 import ujjawal.giphyapp.data.DataManager;
 import ujjawal.giphyapp.ui.base.BasePresenter;
@@ -15,8 +16,7 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V>
         implements SplashMvpPresenter<V> {
 
     @Inject
-    public SplashPresenter(DataManager dataManager,
-                           SchedulerProvider schedulerProvider,
+    public SplashPresenter(DataManager dataManager, SchedulerProvider schedulerProvider,
                            CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }

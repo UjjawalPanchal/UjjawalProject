@@ -16,8 +16,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import butterknife.Unbinder;
+import io.objectbox.BoxStore;
 import ujjawal.giphyapp.MyGiphyApp;
 import ujjawal.giphyapp.R;
 import ujjawal.giphyapp.di.component.ActivityComponent;
@@ -37,6 +37,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     private ActivityComponent mActivityComponent;
 
+    private BoxStore boxStore;
+
     private Unbinder mUnBinder;
 
     @Override
@@ -47,6 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity
                 .applicationComponent(((MyGiphyApp) getApplication()).getComponent())
                 .build();
 
+        boxStore = ((MyGiphyApp) getApplication()).getBoxStore();
     }
 
     public ActivityComponent getActivityComponent() {
@@ -77,6 +80,11 @@ public abstract class BaseActivity extends AppCompatActivity
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.cancel();
         }
+    }
+
+    @Override
+    public BoxStore getBox() {
+        return boxStore;
     }
 
     private void showSnackBar(String message) {

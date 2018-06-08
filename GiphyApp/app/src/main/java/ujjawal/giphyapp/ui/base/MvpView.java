@@ -6,7 +6,11 @@ package ujjawal.giphyapp.ui.base;
 
 import android.support.annotation.StringRes;
 
+import io.objectbox.BoxStore;
+
 public interface MvpView {
+
+    BoxStore getBox();
 
     void showLoading();
 

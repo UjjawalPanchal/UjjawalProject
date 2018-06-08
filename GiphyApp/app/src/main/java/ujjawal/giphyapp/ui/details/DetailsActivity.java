@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.Surface;
+import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -34,11 +36,19 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import io.objectbox.Box;
+import io.objectbox.query.Query;
 import ujjawal.giphyapp.R;
+import ujjawal.giphyapp.data.network.model.ReviewModel;
+import ujjawal.giphyapp.data.network.model.ReviewModel_;
 import ujjawal.giphyapp.ui.base.BaseActivity;
 import ujjawal.giphyapp.ui.main.MainActivity;
 
@@ -55,9 +65,20 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
     @BindView(R.id.player_view)
     SimpleExoPlayerView simpleExoPlayerView;
 
+    @BindView(R.id.thumbUpIcon)
+    AppCompatImageView thumbUpIcon;
+    @BindView(R.id.thumbDownIcon)
+    AppCompatImageView thumbDownIcon;
+    @BindView(R.id.thumbUpText)
+    TextView thumbUpText;
+    @BindView(R.id.thumbDownText)
+    TextView thumbDownText;
+
     SimpleExoPlayer player;
 
     String mainMp4Video;
+    String vidId;
+    long iD;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, MainActivity.class);
@@ -75,6 +96,7 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
         mPresenter.onAttach(this);
 
         mainMp4Video = getIntent().getStringExtra("originalMp4");
+        vidId = getIntent().getStringExtra("vidId");
 
         setUp();
     }
@@ -111,6 +133,7 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
 
         player.setPlayWhenReady(true);
 
+        getReviews();
     }
 
     @Override
@@ -143,6 +166,55 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
         Log.e(TAG, "onDestroy()...");
         player.release();
         mPresenter.onDetach();
+    }
+
+    @OnClick(R.id.thumbUpIcon)
+    @Override
+    public void doThumbsUp() {
+        mPresenter.updateTextCount(iD, true, vidId);
+    }
+
+    @OnClick(R.id.thumbDownIcon)
+    @Override
+    public void doThumbsDown() {
+        mPresenter.updateTextCount(iD, false, vidId);
+    }
+
+    @Override
+    public void getReviews() {
+        Box<ReviewModel> voteBox = getBox().boxFor(ReviewModel.class);
+        Query<ReviewModel> query = voteBox.query().equal(ReviewModel_.gifId, vidId).build();
+        List<ReviewModel> votes = query.find();
+
+        int upV = 0, dnV = 0;
+
+        if (votes.size() > 0) {
+            iD = votes.get(0).getId();
+            upV = votes.get(0).getThumbUp();
+            dnV = votes.get(0).getThumbDown();
+            Log.e("Votes_ID", "--" + votes.get(0).getId());
+            Log.e("Votes_VID", "--" + votes.get(0).getGifId());
+            Log.e("Votes_UP", "--" + votes.get(0).getThumbUp());
+            Log.e("Votes_DN", "--" + votes.get(0).getThumbDown());
+        } else {
+            iD = 0;
+        }
+        setUpImageView(upV, dnV);
+    }
+
+    private void setUpImageView(int thumbUp, int thumbDown) {
+        if (thumbUp == 1) {
+            thumbUpIcon.setAlpha(1f);
+        } else {
+            thumbUpIcon.setAlpha(0.1f);
+        }
+        if (thumbDown == 1) {
+            thumbDownIcon.setAlpha(1f);
+        } else {
+            thumbDownIcon.setAlpha(0.1f);
+        }
+        thumbUpText.setText(thumbUp + " Votes");
+        thumbDownText.setText(thumbDown + " Votes");
     }
 
 }

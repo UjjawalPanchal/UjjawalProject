@@ -15,6 +15,7 @@ import com.google.gson.JsonSyntaxException;
 import javax.inject.Inject;
 import javax.net.ssl.HttpsURLConnection;
 
+import io.objectbox.BoxStore;
 import io.reactivex.disposables.CompositeDisposable;
 import ujjawal.giphyapp.R;
 import ujjawal.giphyapp.data.DataManager;

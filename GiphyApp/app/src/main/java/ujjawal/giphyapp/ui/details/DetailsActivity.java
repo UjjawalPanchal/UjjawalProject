@@ -79,6 +79,7 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
     String mainMp4Video;
     String vidId;
     long iD;
+    int upVote = 0, downVote = 0;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, MainActivity.class);
@@ -171,13 +172,15 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
     @OnClick(R.id.thumbUpIcon)
     @Override
     public void doThumbsUp() {
-        mPresenter.updateTextCount(iD, true, vidId);
+        upVote++;
+        mPresenter.updateTextCount(iD, upVote, downVote, vidId);
     }
 
     @OnClick(R.id.thumbDownIcon)
     @Override
     public void doThumbsDown() {
-        mPresenter.updateTextCount(iD, false, vidId);
+        downVote++;
+        mPresenter.updateTextCount(iD, upVote, downVote, vidId);
     }
 
     @Override
@@ -186,12 +189,10 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
         Query<ReviewModel> query = voteBox.query().equal(ReviewModel_.gifId, vidId).build();
         List<ReviewModel> votes = query.find();
 
-        int upV = 0, dnV = 0;
-
         if (votes.size() > 0) {
             iD = votes.get(0).getId();
-            upV = votes.get(0).getThumbUp();
-            dnV = votes.get(0).getThumbDown();
+            upVote = votes.get(0).getThumbUp();
+            downVote = votes.get(0).getThumbDown();
             Log.e("Votes_ID", "--" + votes.get(0).getId());
             Log.e("Votes_VID", "--" + votes.get(0).getGifId());
             Log.e("Votes_UP", "--" + votes.get(0).getThumbUp());
@@ -199,19 +200,19 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
         } else {
             iD = 0;
         }
-        setUpImageView(upV, dnV);
+        setUpImageView(upVote, downVote);
     }
 
     private void setUpImageView(int thumbUp, int thumbDown) {
-        if (thumbUp == 1) {
-            thumbUpIcon.setAlpha(1f);
-        } else {
+        if (thumbUp == 0) {
             thumbUpIcon.setAlpha(0.1f);
-        }
-        if (thumbDown == 1) {
-            thumbDownIcon.setAlpha(1f);
         } else {
+            thumbUpIcon.setAlpha(1f);
+        }
+        if (thumbDown == 0) {
             thumbDownIcon.setAlpha(0.1f);
+        } else {
+            thumbDownIcon.setAlpha(1f);
         }
         thumbUpText.setText(thumbUp + " Votes");
         thumbDownText.setText(thumbDown + " Votes");

@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "314656049825",
+    "firebase_url": "https://my-project-1472737456326.firebaseio.com",
+    "project_id": "my-project-1472737456326",
+    "storage_bucket": "my-project-1472737456326.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314656049825:android:ca090395d5087225",
+        "android_client_info": {
+          "package_name": "ujjawal.giphyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314656049825-9qdf1be8tgmh5lni6o9avd5htsvs7913.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ujjawal.giphyapp",
+            "certificate_hash": "63124caffacb49957744427b582c7e86ca070db2"
+          }
+        },
+        {
+          "client_id": "314656049825-fa3krsh9m7tpmvg5ja2nuna834j9q6ud.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "314656049825-fa3krsh9m7tpmvg5ja2nuna834j9q6ud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYE7nlI2-hl3XYbA0RoaBVDmC3Q2ZJaRo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314656049825-fa3krsh9m7tpmvg5ja2nuna834j9q6ud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

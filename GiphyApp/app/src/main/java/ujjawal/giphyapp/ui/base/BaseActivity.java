@@ -87,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity
         return boxStore;
     }
 
-    private void showSnackBar(String message) {
+    public void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 message, Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();

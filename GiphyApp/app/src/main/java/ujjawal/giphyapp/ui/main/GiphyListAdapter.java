@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ujjawal.giphyapp.R;
 import ujjawal.giphyapp.data.network.model.MainResponse;
+import ujjawal.giphyapp.ui.base.BaseActivity;
 import ujjawal.giphyapp.ui.base.BaseViewHolder;
 import ujjawal.giphyapp.ui.details.DetailsActivity;
 import ujjawal.giphyapp.utils.AppLogger;
@@ -117,7 +118,7 @@ public class GiphyListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (blog.getEmbedUrl() != null) {
+                    if (blog.getImages().getOriginalMp4().getMp4() != null) {
                         try {
                             Intent intent = new Intent(itemView.getContext(), DetailsActivity.class);
                             intent.putExtra("vidId", blog.getId());
@@ -126,6 +127,8 @@ public class GiphyListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                         } catch (Exception e) {
                             AppLogger.d("url error");
                         }
+                    } else {
+                        ((BaseActivity) itemView.getContext()).showSnackBar("Video url not found.");
                     }
                 }
             });

@@ -28,21 +28,25 @@ public class DetailsPresenter<V extends DetailsMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public void updateTextCount(long id, boolean isUp, String vidId) {
+    public void updateTextCount(long id, int upV, int dnV, String vidId) {
         Box<ReviewModel> voteBox = getMvpView().getBox().boxFor(ReviewModel.class);
 
         ReviewModel rm = new ReviewModel();
         rm.setId(id);
         rm.setGifId(vidId);
-        if (isUp) {
-            rm.setThumbDown(0);
-            rm.setThumbUp(1);
-        } else {
-            rm.setThumbDown(1);
-            rm.setThumbUp(0);
-        }
+        rm.setThumbUp(upV);
+        rm.setThumbDown(dnV);
         voteBox.put(rm);
 
+// //     IF WANT TO ADD ONLY ONE UP/DOWN VOTE FOR GIF
+//        if (isUp) {
+//            rm.setThumbDown(0);
+//            rm.setThumbUp(1);
+//        } else {
+//            rm.setThumbDown(1);
+//            rm.setThumbUp(0);
+//        }
+        
         getMvpView().getReviews();
     }
 }
